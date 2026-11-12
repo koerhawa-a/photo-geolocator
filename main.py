@@ -482,6 +482,8 @@ def main():
     answers = []
     for photo in photos:
         pid = photo.get("id")
+        if pid is None:
+            continue  # a photo without an id cannot be answered
         url = photo.get("url", "/photos/%s.jpg" % pid)
         if not url.startswith("http"):
             url = env_url + url
